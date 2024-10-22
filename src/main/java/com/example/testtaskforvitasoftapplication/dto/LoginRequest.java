@@ -1,6 +1,6 @@
 package com.example.testtaskforvitasoftapplication.dto;
 
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 

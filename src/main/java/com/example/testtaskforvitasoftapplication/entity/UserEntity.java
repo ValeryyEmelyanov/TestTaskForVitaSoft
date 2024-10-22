@@ -3,14 +3,15 @@ package com.example.testtaskforvitasoftapplication.entity;
 import com.example.testtaskforvitasoftapplication.entity.enumClasses.RoleEnum;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 import lombok.*;
-import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
 @Getter
 @Setter
+@Table(name = "UserEntity")
 public class UserEntity {
 
     @Id
