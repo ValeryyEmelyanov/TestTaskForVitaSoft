@@ -62,4 +62,9 @@ public class UserService {
     public List<Request> getRequestsByUserId(Long id) {
         return requestRepository.findRequestsByUserId(id);
     }
+
+    public UserEntity getUserById(Long id) {
+        Optional<UserEntity> userOptional = userRepository.findById(id);
+        return userOptional.orElse(null);
+    }
 }

@@ -8,6 +8,7 @@ import com.example.testtaskforvitasoftapplication.repository.RequestRepository;
 import com.example.testtaskforvitasoftapplication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -110,4 +111,8 @@ public class RequestService {
         return convertToDTO(savedRequest);
     }
 
+    public List<Request> getAllRequests(Pageable pageable) {
+        Page<Request> requestPage = requestRepository.findAll(pageable);
+        return requestPage.getContent();
+    }
 }
