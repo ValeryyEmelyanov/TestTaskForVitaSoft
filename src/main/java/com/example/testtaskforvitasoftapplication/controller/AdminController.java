@@ -5,6 +5,8 @@ import com.example.testtaskforvitasoftapplication.entity.enumClasses.RoleEnum;
 import com.example.testtaskforvitasoftapplication.service.AdminService;
 import com.example.testtaskforvitasoftapplication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +26,23 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserEntity>> getAllUsers() {
-        List<UserEntity> users = adminService.getAllUsers();
+    public ResponseEntity<Page<UserEntity>> getAllUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<UserEntity> users = userService.getAllUsers(PageRequest.of(page, size));
         return ResponseEntity.ok(users);
+    }
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity userDetails) {
+        UserEntity updatedUser = userService.updateUser(id, userDetails);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/users/search")

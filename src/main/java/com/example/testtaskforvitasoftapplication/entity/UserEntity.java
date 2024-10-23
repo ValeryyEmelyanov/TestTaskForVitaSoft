@@ -21,6 +21,9 @@ public class UserEntity {
     @NotEmpty(message = "Name cannot be empty")
     private String name;
 
+    @NotEmpty(message = "Password cannot be empty")
+    private String password;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<RoleEnum> roles;

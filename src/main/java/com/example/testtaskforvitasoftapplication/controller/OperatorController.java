@@ -26,9 +26,9 @@ public class OperatorController {
         return ResponseEntity.ok(requests);
     }
 
-    @GetMapping("/requests/user/{userId}")
-    public ResponseEntity<List<Request>> getRequestsByUserId(@PathVariable Long userId) {
-        List<Request> requests = requestService.getRequestsByUserId(userId);
+    @GetMapping("/requests/user/{id}")
+    public ResponseEntity<List<Request>> getRequestsByUserId(@PathVariable Long id) {
+        List<Request> requests = requestService.getRequestsByUserId(id);
         return ResponseEntity.ok(requests);
     }
 

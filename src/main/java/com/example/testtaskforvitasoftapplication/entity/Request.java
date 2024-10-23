@@ -18,7 +18,7 @@ public class Request {
 
     @Enumerated(EnumType.STRING)
     private RequestStatusEnum status;
-    private String content;
+    private String text;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -26,4 +26,5 @@ public class Request {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
 }
